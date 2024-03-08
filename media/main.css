@@ -1,0 +1,55 @@
+body {
+	background-color: transparent;
+}
+
+ul {
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
+}
+
+li.list-item {
+	display: flex;
+	flex-direction: row;
+	border: none;
+	padding-left: 8px;
+	width: 100%;
+	text-align: center;
+	outline: 1px solid transparent;
+	outline-offset: 2px !important;
+	color: var(--vscode-button-foreground);
+	background: var(--vscode-button-background);
+	align-items: center;
+}
+
+li.list-item:hover {
+	background: var(--vscode-button-hoverBackground);
+}
+
+li.list-item > span {
+	flex: 1;
+	text-align: left;
+	font-size: 12px;
+}
+
+li.list-item > button {
+	background: transparent;
+	flex: 0;
+}
+
+li.list-item > button:hover {
+	background: var(--vscode-button-secondaryHoverBackground);
+}
+
+li.list-item > button:hover .codicon-play {
+	color: #10c310;
+}
+
+code {
+	line-break: anywhere;
+}
+
+hr {
+	border-color: var(--vscode-button-hoverBackground);
+	margin: 16px 0;
+}
