@@ -2,6 +2,23 @@ body {
 	background-color: transparent;
 }
 
+div.refresh-codemuds {
+	display: flex;
+	justify-content: flex-start;
+	gap: 8px;
+	align-items: center;
+	margin-top: 16px;
+	align-items: center;
+}
+
+div.refresh-codemuds > button {
+	padding: 0;
+	height: 20px;
+	width: 20px;
+	padding-top: 2px;
+	border-radius: 25%;
+}
+
 ul {
 	display: flex;
 	flex-direction: column;

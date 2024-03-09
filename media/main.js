@@ -28,6 +28,10 @@
             });
         });
     });
+
+    document.querySelector('#refresh-codemuds')?.addEventListener('click', () => {
+        vscode.postMessage({ type: 'refreshCodemuds' });
+    });
 }());
 
 

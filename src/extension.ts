@@ -29,7 +29,7 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 
 	public async resolveWebviewView(webviewView: vscode.WebviewView, context: vscode.WebviewViewResolveContext, token: vscode.CancellationToken) {
 		this._view = webviewView;
-		this._codemuds = await vscode.workspace.findFiles(`${this.codemudFolder}/*.ts`, '**/node_modules/**');
+		this._codemuds = await this._getCodemuds();
 
 		webviewView.webview.options = {
 			// Allow scripts in the webview
@@ -56,6 +56,11 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 						vscode.workspace.openTextDocument(data.path).then((doc) => {
 							vscode.window.showTextDocument(doc);
 						});
+						break;
+					}
+				case 'refreshCodemuds':
+					{
+						this._updateCodemuds();
 						break;
 					}
 			}
@@ -112,6 +117,12 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 			<code>${currentPath}</code>
 			<hr />
 			<p>Click <i class="codicon codicon-play"></i> to run the codemod or <i class="codicon codicon-symbol-file"></i> to open it's source file</p>
+			<div class="refresh-codemuds">
+				Refresh codemuds:
+				<button id="refresh-codemuds">
+					<div class="icon"><i class="codicon codicon-refresh"></i></div>
+				</button>
+			</div>
 			<ul>
 				${this._codemuds.map((codemud) => `
 					<li class="list-item">
@@ -149,6 +160,14 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 		terminal.show();
 	}
 
+	private _getCodemuds() {
+		return vscode.workspace.findFiles(`${this.codemudFolder}/*.ts`, '**/node_modules/**');
+	}
+
+	private async _updateCodemuds() {
+		this._codemuds = await this._getCodemuds();
+		this.updateWebView();
+	}
 }
 
 function getNonce() {
