@@ -19,9 +19,4 @@ $ npm install -g jscodeshift
 $ npm install @types/jscodeshift --save-dev
 ```
 
-# Scripts
-Run Dev: `Inside the editor, open src/extension.ts and press F5`
-
-Packaging: `vsce package`
-
-Installing: `code --install-extension my-extension-0.0.1.vsix`
+What to contribute? [Check here](https://github.com/carloseustaquio/codemud/blob/main/CONTRIBUTE.md)
