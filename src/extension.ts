@@ -160,8 +160,9 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 		terminal.show();
 	}
 
-	private _getCodemuds() {
-		return vscode.workspace.findFiles(`${this.codemudFolder}/*.ts`, '**/node_modules/**');
+	private async _getCodemuds() {
+		const codemuds = await vscode.workspace.findFiles(`${this.codemudFolder}/*.ts`, '**/node_modules/**');
+		return codemuds.sort((a, b) => a.path.localeCompare(b.path));
 	}
 
 	private async _updateCodemuds() {
