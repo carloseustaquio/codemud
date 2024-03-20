@@ -3,7 +3,7 @@
   "displayName": "codemud",
   "description": "Run codemods easy peezy",
   "publisher": "CarlosEustquio",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.87.0"
   },
