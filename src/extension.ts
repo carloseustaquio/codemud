@@ -155,7 +155,7 @@ class CodemudViewProvider implements vscode.WebviewViewProvider {
 	private _runCodemud(path: string) {
 		console.log('Running codemud', path);
 		const currentTextEditorPath = vscode.window.activeTextEditor?.document.fileName;
-		const terminal = vscode.window.createTerminal('Codemud');
+		const terminal = vscode.window.terminals.find((terminal) => terminal.name === 'Codemud') || vscode.window.createTerminal('Codemud');
 		terminal.sendText(`npx jscodeshift -t ${path} ${currentTextEditorPath}`);
 		terminal.show();
 	}
